@@ -1,0 +1,26 @@
+[
+  {
+    "id":0,
+    "icon": "/offer.jpg",
+    "name": "CLEAN PARADISE",
+    "desc": "오직 파라다이스시티에서만 만날 수 있는 바카라 미스터리 잭팟!"
+  },
+  {
+    "id":1,
+    "icon": "/offer.jpg",
+    "name": "SPA CIMER",
+    "desc": "자기야, 바로 여기! 다시 돌아온 인생샷 명소"
+  },
+  {
+    "id":2,
+    "icon": "/offer.jpg",
+    "name": "THEME PARK WONDERBOX",
+    "desc": "엄빠, 바로 여기! 꿈이 현실로 이루어지는 곳"
+  },
+  {
+    "id":3,
+    "icon": "/offer.jpg",
+    "name": "BACCARAT JACKPOT",
+    "desc": "오직 파라다이스시티에서만 만날 수 있는 바카라 미스터리 잭팟!"
+  }
+]

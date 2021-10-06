@@ -1,0 +1,163 @@
+
+/* rgba(158, 142, 93, 1) */
+/* rgb(187, 169, 116) */
+
+
+
+/* offer form */
+
+.offer-form{
+    position:fixed;
+    left:0px;
+    z-index:10;
+    bottom:0;
+    width:100%;
+    height:120px;
+    margin:0 auto;
+    background:rgba(255,255,255,1); 
+    display:flex;
+    justify-content:center;
+}
+.offer-form-inside { 
+    position:relative;
+    display:flex;
+    width:1000px; 
+    height:120px;
+}
+.offer-form-inside>div {
+    margin-right:50px;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:rgba(158, 142, 93, 1);
+    font-weight:600;
+    font-size:0.9em;
+}
+
+.offer-form-inside select {
+    height: 2.3em;
+    font-size: 1.4em;
+    width: 10em;
+    border:none;
+    border-bottom:4px solid rgba(158, 142, 93, 1);
+    cursor:pointer; 
+}
+select:focus {
+    outline:none;
+}
+
+.checkin-box {
+    width:270px;
+    justify-content:space-between
+}
+
+.checkin-box span:nth-child(1)  {
+    margin-left:8px;
+}
+.checkin-box span:nth-child(2)  {
+    margin-left:36px;
+}
+
+.guests {
+    text-align:center;
+    min-width:300px;
+    height:100%;
+    display:flex;
+    align-items:center;
+}
+.guests>div {
+    margin-right:30px;
+}
+.guest {
+    display:flex;
+    margin-top:-40px;
+}
+.guest>div {
+    align-items: center;
+    line-height:50px;
+}
+.guest>div:nth-child(1),
+.guest>div:nth-child(3){
+    border:2px solid rgba(158, 142, 93, 1);
+    border-radius:50%;
+    width:15px;
+    height:15px;
+    line-height:20px;
+    cursor:pointer;
+}
+.guest>div:nth-child(2)>span{
+    color:rgb(61, 61, 61);
+    font-size:2em;
+}
+/* 메인배경 */
+.bg-box {
+    width:100%; height:100%;
+    position:absolute;
+    top:0; left:0;
+    background: rgb(255, 255, 255,0.5);
+    z-index:-1;
+}
+.bg {
+    display:block;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0; left:0;
+    z-index:-1;
+}
+.bg-box-init {
+    display:block;
+    width:100%; 
+    min-height:100%;
+    height:100%;
+    position:absolute;
+    top:0; left:0;
+    z-index:-1;
+}
+/* 가로스크롤 */
+.offer-box {
+    opacity:0.6;
+    transition:all 800ms ;
+}
+.offer-name, .offer-desc {
+    color:rgba(255,255,255,1);
+}
+.offer-name {
+    border-top:10px solid rgba(158, 142, 93, 1);
+    font-size:2.1em;
+    padding-top:10px;
+}
+.offer-desc {
+    font-size:1.2em;
+    font-weight:500;
+    margin-top:15px;
+    padding-bottom:100px;
+}
+.offer-box:hover {
+    opacity:1;
+    cursor:pointer;
+}
+.scrollItems {
+    transition:all 800ms ;
+}
+.scrollItems:hover {
+    background:rgba(0,0,0,0.6) !important;
+}
+.scroll-icon {
+    width:50px;
+    height:30px;
+    position:relative;
+    left:2em;top:-2.5em;
+    animation: scroll-ani 700ms alternate infinite;
+}
+@keyframes scroll-ani {
+    0%{
+        left:2.5em;
+    }
+    100%{
+        left:2em;
+    }
+}
+.scroll-icon img {
+    width:100%;
+    /* margin-top:-8px; */
+}

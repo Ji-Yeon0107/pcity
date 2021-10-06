@@ -1,0 +1,342 @@
+button{
+    cursor:pointer;
+}
+
+/* main */
+.booking-main {
+    width:1100px;
+    min-width:1100px;
+    position:relative;
+    top:45px;left:0;
+    padding-top:80px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content:center;
+    color:1px solid rgb(29, 29, 29);
+}
+.tabs-container {
+    /* border:1px solid rgb(179, 179, 179); */
+    padding-bottom:40px;
+    border:1px solid rgb(180, 174, 154);
+    
+}
+
+/* main-center */
+.booking-main-center {
+    width:794px;
+    margin-bottom:100px;
+}
+/* main-center - 탭 */
+.tabs {
+    display:flex;
+    justify-content:center;
+    text-align:center;
+    
+}
+.tabs>li {
+    width:50%;
+    height:50px;
+    cursor:pointer;
+    line-height:50px;
+    border-bottom:1px solid rgb(180, 174, 154);
+    background:rgb(180, 174, 154);
+    color:rgb(255,255,255);
+}
+.tabs>li:first-child{
+    border-right:1px solid rgb(180, 174, 154);
+}
+.tabs>li:nth-child(2){
+    border-left:1px solid rgb(180, 174, 154);
+}
+.tab-content {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width:100%;
+    height:40px;
+    margin-top:30px;
+    margin-bottom:50px;
+    justify-content:space-between;
+    
+}
+
+.tabs .is-active {
+    border-bottom:none;
+    background:transparent;
+    color:rgb(29, 29, 29);;
+
+}
+.tab-content>div {
+    width:250px;
+    height:100%;
+    line-height:40px;
+    /* text-indent:15px; */
+    border:1px solid rgb(180, 174, 154);
+    margin-right:6px;
+    padding-left:10px;
+    padding-right:10px;
+}
+.tab-button-box {
+    width:400px;
+    position:relative;
+    top:0;left:0;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+hr {
+    background:rgba(158, 142, 93, 1);
+}
+.tab-button-box button{
+    border:none;
+    width:160px;
+    height:45px;
+    margin-top:30px;
+    background:rgba(158, 142, 93, 1);
+    color:rgba(255,255,255,1);
+    cursor:pointer;
+    transition:all 500ms;
+}
+.tab-button-box button:active {
+    background:rgb(255,255,255);
+    color:rgba(158, 142, 93, 1);
+}
+ /* datepicker */
+
+ /* datepicker end*/
+ .tab-content>div:nth-child(1){
+     width:170px;
+ }
+.tab-content>div:nth-child(3),
+.tab-content>div:nth-child(4){
+    width:130px;
+}
+
+.guest {
+    align-items: center;
+    text-align:center;
+    justify-content: space-between;
+}
+.guest-booking {
+    margin-top:0 !important;
+}
+.guest>div:nth-child(1),
+.guest>div:nth-child(3){
+    border:2px solid rgba(158, 142, 93, 1);
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    line-height:20px;
+    cursor:pointer;
+}
+.guest>div:nth-child(2) {
+    margin:5px;
+}
+
+
+
+/* main-center - offerList */
+.offer-list>h1 {
+    font-size:1em;
+    color:rgba(158, 142, 93, 1);
+    margin-bottom:12px;
+    margin-top:20px;
+}
+#price-sort {
+    position:relative;
+    top:0; left:88%;
+    cursor:pointer;
+}
+/* main- center - offerListHeader */
+    
+
+/* main- center - offerListMain */
+
+.offer-list-main {
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 50px;
+}
+.offer-item {
+    position:relative;
+    top:100px;
+    border:1px solid rgb(202, 187, 174);
+    margin-top:20px;
+    margin-right:10px;
+}
+.offer-item>p:nth-child(1) {
+    cursor:pointer;
+    overflow:hidden;
+    width:256px;
+    height:168px;
+}
+.offer-item>p:nth-child(1):after {
+    content:'담기(예약)';
+    text-indent:90px;
+    line-height:158px;
+    font-size:1.2em;
+    color:rgba(255,255,255,1);
+    display:block;
+    width:256px;
+    height:168px;
+    position:absolute;
+    left:0;top:0;
+    background:rgba(32, 32, 32,0.6);
+    opacity:0;
+    transition:all 500ms;
+}
+.offer-item>p:nth-child(1) img {
+    transition:all 500ms;
+}
+.offer-item>p:nth-child(1):hover img{
+    transform:scale(1.1)
+}
+.offer-item>p:nth-child(1):hover:after {
+    opacity:1
+}
+
+.offer-item>p:nth-child(2) {
+    font-weight:700;
+}
+.offer-item>p:nth-child(3) {
+    height:40px;
+}
+.offer-item>p:nth-child(4) {
+    font-weight:700;
+}
+.offer-item>p:nth-child(6) {
+    font-weight:700;
+    font-size:0.8em;
+    margin-bottom:30px;
+}
+.offer-item>p:nth-child(2),
+.offer-item>p:nth-child(3),
+.offer-item>p:nth-child(4),
+.offer-item>p:nth-child(5),
+.offer-item>p:nth-child(6) {
+    padding:10px;
+}
+.offer-item:nth-child(3n+1){
+    animation:offerItem-ani 900ms forwards;
+    opacity:0;
+}
+.offer-item:nth-child(3n+2){
+    animation:offerItem-ani 900ms forwards;
+    animation-delay:300ms;
+    opacity:0;
+}
+.offer-item:nth-child(3n+3){
+    animation:offerItem-ani 900ms forwards;
+    animation-delay:600ms;
+    opacity:0;
+}
+@keyframes offerItem-ani {
+    0%{
+        opacity:0;
+        top:100px;
+    
+    }
+    100%{
+        opacity:1;
+        top:0;
+    }
+}
+.call {
+    width:100%;
+    height:50px;
+    line-height:50px;
+    padding: 10px 0;
+    text-indent:50px;
+    margin-top:100px;
+    border:1px solid gray;
+}
+
+
+
+/* main-side */
+.booking-main-side {
+    width:270px;
+    height:80%;
+    display:block;
+    position:fixed;
+    right:10%;
+    background:rgb(247, 245, 238);
+    border-radius:20px;
+}
+.booking-info {
+    position:relative;
+    top:0;left:0;
+    width:270px;
+    height:70%;
+    color:rgb(80, 80, 80);
+
+}
+
+.cart {
+    border-radius:3px;
+    min-height:230px;
+    height:80%;
+    padding:12px;
+}
+.cart-header {
+    display:flex;
+    justify-content:space-between;
+    height:50px;
+    line-height:50px;
+    text-indent:20px;
+    border-bottom:1px solid rgb(255,255,255);
+    font-weight:700;
+}
+.cart-header > button {
+    border:none;
+    height:30px;
+    width:60px;
+    margin-top:10px;
+}
+.cart-cont {
+    min-height:200px;
+    max-height:85%;
+    overflow:auto;
+    
+
+}
+.cart-cont ::webkit-scrollbar {
+    width: 5px;
+}
+.cart-cont ::webkit-scrollbar-thumb {
+    background-color: #686868;
+}
+.detail-button {
+    position:relative ;
+    top:20px;left:0;
+    margin-top:40px;
+    width:270px;
+    height:50px;
+}
+.detail-button>button {
+    display:block;
+    width:90%;
+    margin:0 auto;
+    height:100%;
+    border:none;
+    border-radius:10px;
+    background:rgb(133, 116, 66);
+    cursor:pointer;
+}
+.sum {
+    position:relative;
+    top:0; left:0;
+    width:100%;
+    height:90px;
+    padding:12px;
+    box-sizing:border-box;
+}
+
+.booking-info>div:last-child{ /*vat포함*/
+    text-align:right;
+    font-size:0.8em;
+}
+.sum>li{
+    display:flex;
+    justify-content:space-between;
+}

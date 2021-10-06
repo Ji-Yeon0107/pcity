@@ -1,0 +1,233 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin:0; padding:0;
+    list-style:none;
+}
+a {
+    text-decoration:none;
+    color:inherit;
+    font-weight:inherit;
+    font-family:inherit;
+}
+.wrapper {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+/* Header */
+header {
+    position:fixed;
+    left:0;
+    z-index:2;
+    width:100%;
+    padding-bottom:12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size:0.9em;
+}
+.main-header {
+    _top:45px;
+    height:55px;
+    color: rgba(255,255,255,1);
+}
+
+.main-header:after {
+    content:'';
+    display:block;
+    position:relative;top:70px;left:220px;
+    border-bottom:1px solid rgba(187, 169, 116, 0.356);
+    
+}
+.sub-header {
+    top:0px;
+    height:36px;
+    background:rgb(37, 37, 37);
+}
+.sub-header:after {
+    content:'';
+    display:block;
+    position:relative;top:46px;left:225px;
+    border-bottom:1px solid rgba(187, 169, 116, 0.356);
+}
+/* header - menu */
+nav {
+    display:flex;
+    position:absolute;
+    width:700px;
+    height:50px;
+    line-height:50px;
+}
+nav>div {
+    cursor:pointer;
+}
+.nav-left>div:after {
+    content:'';
+    display:block;
+    width:0px;
+    transform:translateX(4%);
+    position:relative;
+    top:-6px;
+    left:0;
+    border-bottom:4px solid rgba(187, 169, 116, 1);
+    transition:all 500ms;
+}
+.nav-left>div:first-child:after,
+.nav-left>div:last-child:after {
+    display:none;
+}
+.main-header .nav-left>div:after {
+    top:-17px;
+
+}
+nav>div:hover {
+    color:rgba(187, 169, 116, 0.7);
+}
+.nav-left>div:hover:after {
+    width:92%;
+}
+/* Right Menu */
+.nav-right {
+    width:300px;
+    height:100%;
+    right:0;
+}
+.nav-right>div {
+    width:70px;
+    height:100%;
+    font-size:0.8em;
+    text-align:center;
+}
+
+/* left menu */
+.nav-left {
+    height:76px;
+    /* top은 main, sub각각 지정함 */
+    left:0; 
+    position:absolute;
+}
+.nav-bg {
+    width:100vw !important;
+    height:76px;
+    position:absolute;
+    top:0; left:0;
+    z-index:-1;
+    background:rgba(37, 37, 37, 0);
+    transition: all 300ms;
+}
+.main-header>.nav-right>.nav-bg{
+    left:calc(-100vw + 340px);
+    height:76px;
+
+}
+.main-header>.nav-left:hover .nav-bg,
+.main-header>.nav-right:hover .nav-bg {
+    background:rgba(37, 37, 37,0.9);
+}
+.nav-left>div {
+    width:105px;
+    height:100%;
+    line-height:85px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;
+    font-size:0.9em;
+    text-align:center;
+}
+.nav-left>div:nth-child(1) {
+    width:175px;
+    height:76px;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+.nav-left>div:nth-child(2) {
+    width:180px;
+    color:rgb(187, 169, 116);
+    font-weight:800;
+}
+.nav-left>div:nth-child(5) {
+    width:140px;
+}
+.nav-left>div:nth-child(1) img {
+    width:100%; height:100%;
+}
+.main-header .menulist-box {
+    position:fixed;
+    left:0px;
+    top:75px;
+    width:100%;
+    _height:370px;
+    height:0px;
+    overflow:hidden;
+    background:rgb(37, 37, 37,0.9);
+    color: rgba(255, 255, 255, 0.6);
+    display:flex;
+    text-align:left;
+    padding-left:230px;
+    transition:all 500ms;
+}
+.main-header .nav-left>div:hover .menulist-box{
+    height:370px;
+}
+/* subpage- menu */
+.sub-header .nav-left {
+    height:100%;
+}
+.sub-header .nav-left>div {
+    line-height:inherit;
+}
+.sub-header .nav-left>div:nth-child(1) img {
+    position:relative;
+    top:-14px;
+}
+/* nav-left - menulist-box */
+.sub-header .menulist-box {
+    position:fixed;
+    left:0px;
+    top:46px;
+    width:100%;
+    _height:370px;
+    height:0px;
+    overflow:hidden;
+    background:rgb(37, 37, 37);
+    color: rgba(255, 255, 255, 0.6);
+    display:flex;
+    text-align:left;
+    padding-left:230px;
+    transition:all 300ms;
+
+}
+.sub-header .nav-left>div:hover .menulist-box{
+    height:370px;
+}
+.menulist-box li {
+    margin-right:55px;
+}
+.menulist-box>li>div {
+    height: 25px;
+    font-weight:500;
+    line-height:25px;
+
+}
+.menulist-box>li>div {
+    font-size:0.95em;
+}
+.menulist-box>li>div:nth-child(1){
+    color:rgb(187, 169, 116,0.6);
+    margin-top:10px;
+}
+.menulist-box>li>div:nth-child(2) {
+    color: rgba(255, 255, 255, 1);
+    font-weight:700;
+    font-size:1.2em;
+    margin-bottom:12px;
+}
+.menulist-box>li>div:hover {
+    color:rgb(187, 169, 116,0.6);
+}
+.menulist-box>li>div:nth-child(1):hover{
+    color:rgb(187, 169, 116,0.6);
+}
+.menulist-box>li>div:nth-child(2):hover {
+    color: rgba(255, 255, 255, 1);
+}
