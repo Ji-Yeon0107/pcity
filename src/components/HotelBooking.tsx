@@ -22,13 +22,17 @@ interface HotelBookingProps {
     setActiveSelect:any;
     offerItems:any;
     sortedItems:any;
+    selectOffer:any;
     setSortedItems:any;
+    activeSelect:boolean;
     setSelectOffer:any;
     handleOffer:any;
+    sumPrices:any;
+    setSumPrices:any;
 }
 
 
-export const HotelBooking:React.FC<HotelBookingProps> = ({abc,def, setDef, sortState, setSortState,setActiveSelect, setSelectOffer,offerItems,sortedItems,setSortedItems,handleOffer}) => {
+export const HotelBooking:React.FC<HotelBookingProps> = ({abc,def, setDef, sortState, setSortState,setActiveSelect, setSelectOffer,offerItems,sortedItems,selectOffer,setSortedItems,handleOffer,activeSelect,setSumPrices,sumPrices}) => {
 
     
     
@@ -83,6 +87,8 @@ export const HotelBooking:React.FC<HotelBookingProps> = ({abc,def, setDef, sortS
         setSortedItems(res)
 
     }
+
+    
     
   
 if(sortState) {
@@ -90,9 +96,17 @@ if(sortState) {
         return(
             <li className="offer-item" key={i} onClick={()=>{
                 setDef("");
-                handleOffer();
                 setActiveSelect(true);
-                setSelectOffer(offerItem);
+                handleOffer();
+                var selList = [...selectOffer, offerItem];
+                setSelectOffer(selList);
+                // 같은 것 선택방지
+                selectOffer.forEach((el:any)=>{
+                    if(el===offerItem) {
+                        setSelectOffer(selectOffer);
+                    }
+                })
+                 setSumPrices(Number(offerItem.price.replace(/\,/g,''))+sumPrices)
             }
             }>
                 <p><img style={imageSize} src={"https://ji-yeon0107.github.io/learning/"+(offerItem.imgURL)+".jpg"} alt="offer" /></p>
@@ -107,12 +121,22 @@ if(sortState) {
                 )
             })
 }else {
+    
     var mapItems = items.map((offerItem:any, i:number)=>{
         return(
             <li className="offer-item" key={i} onClick ={()=>{
-                handleOffer();
                 setActiveSelect(true);
-                setSelectOffer(offerItem);
+                handleOffer();
+                var selList = [...selectOffer, offerItem];
+                setSelectOffer(selList);
+                // 같은 것 선택방지
+                selectOffer.forEach((el:any)=>{
+                    if(el===offerItem) {
+                        setSelectOffer(selectOffer);
+                    }
+                })
+                setSumPrices(Number(offerItem.price.replace(/\,/g,''))+sumPrices)
+
             }}>
                 <p><img style={imageSize} src={"./images/"+(offerItem.imgURL)+".jpg"} alt="offer" /></p>
                 <p>{offerItem.name}</p>
@@ -126,8 +150,6 @@ if(sortState) {
                 )
             })
 }
-    
-  
     return (
         <div className="offer-list">
             <h1>HOTEL PARADISE</h1>

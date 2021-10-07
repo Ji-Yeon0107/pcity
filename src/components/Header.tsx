@@ -5,11 +5,18 @@ import { Popup } from "./Popup"
 import { LeftMenu } from "./Menu"
 import { RightMenu } from "./Menu"
 
-export const Header:React.FC = () => {
+type HeaderProps = {
+    user:any;
+    handleLogout:any;
+}
+
+export const Header:React.FC<HeaderProps> = ({user,handleLogout}) => {
 
     return(
         <header className="main-header">
-            <RightMenu />
+            <RightMenu 
+            user={user} 
+            handleLogout={handleLogout} />
             <LeftMenu />
         </header>
     )

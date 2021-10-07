@@ -88,13 +88,18 @@ nav>div:hover {
     width:92%;
 }
 /* Right Menu */
+.login-email {
+    font-weight:700;
+}
 .nav-right {
-    width:300px;
+    width:400px;
     height:100%;
     right:0;
 }
 .nav-right>div {
-    width:70px;
+    width:fit-content;
+    padding-left:10px;
+    padding-right:10px;
     height:100%;
     font-size:0.8em;
     text-align:center;

@@ -17,13 +17,17 @@ interface HotelBookingProps {
     setActiveSelect:any;
     offerItems:any;
     sortedItems:any;
+    selectOffer:any;
     setSortedItems:any;
+    activeSelect:boolean;
     setSelectOffer:any;
     handleOffer:any;
+    sumPrices:any;
+    setSumPrices:any;
 }
 
 
-export const EntBooking:React.FC<HotelBookingProps> = ({abc,def, setDef, sortState, setSortState,setActiveSelect, setSelectOffer,offerItems,sortedItems,setSortedItems,handleOffer}) => {
+export const EntBooking:React.FC<HotelBookingProps> = ({abc,def, setDef, sortState, setSortState,setActiveSelect, setSelectOffer,offerItems,sortedItems,selectOffer,setSortedItems,handleOffer,activeSelect,setSumPrices,sumPrices}) => {
 
     const [entOfferItems, setEntOfferItems] = useState<any>(offerItemsData);
 
@@ -42,9 +46,17 @@ export const EntBooking:React.FC<HotelBookingProps> = ({abc,def, setDef, sortSta
                     entOfferItems.map((offerItem:any, i:number)=>{
                         return(
                             <li className="offer-item" key={i}  onClick ={()=>{
-                                handleOffer();
                                 setActiveSelect(true);
-                                setSelectOffer(offerItem);
+                                handleOffer();
+                                var selList = [...selectOffer, offerItem];
+                                setSelectOffer(selList);
+                                // 같은 것 선택방지
+                                selectOffer.forEach((el:any)=>{
+                                if(el===offerItem) {
+                                setSelectOffer(selectOffer);
+                                }
+                                })
+                                setSumPrices(Number(offerItem.price.replace(/\,/g,''))+sumPrices)
                             }}>
                                  <p><img style={imageSize} src={"https://ji-yeon0107.github.io/learning/images/"+(offerItem.imgURL)+".jpg"} alt="entoffer" /></p>
                                 <p>{offerItem.name}</p>

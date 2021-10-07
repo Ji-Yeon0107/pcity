@@ -33,23 +33,17 @@ type OfferItems = {
 
 export const Booking:React.FC<BookingProps> = ({adultNum,kidNum,guestNum, setAdultNum, setKidNum, setGuestNum, setDateRange,startDate,endDate,today}) => {
 
+    //총합계금액
+    const[sumPrices, setSumPrices] = useState(0);
+
+
     const [offerItems, setOfferItems] = useState<any>(offerItemsData);
     const [sortedItems, setSortedItems] = useState<any>(offerItemsData);
 
-    const [selectOffer, setSelectOffer] = useState<any>([{
-        "name": "",
-        "desc": "",
-        "price": "0",
-        "startyear": "",
-        "startmonth": "",
-        "startdate": "" ,
-        "endyear": "",
-        "endmonth": "",
-        "enddate": ""
-    }])
-console.log("가격"+selectOffer.price)
+    const [selectOffer, setSelectOffer] = useState<any>([])
+
     // 담기
-    const [activeSelect, setActiveSelect] = useState(true);
+    const [activeSelect, setActiveSelect] = useState(false);
 
     // 페이지 이동
     const location = useLocation();
@@ -72,15 +66,7 @@ console.log("가격"+selectOffer.price)
 
     const[nights,setNights] = useState(1);
 
-        // 선택된 offer뿌리기
-        const select = (
-            <div style={selectOfferStyle}>
-                <div>상품명: {selectOffer.name}</div>
-                <div>날짜: {selectOffer.startyear}.{selectOffer.startmonth}.{selectOffer.startdate} ~ {selectOffer.endyear}.{selectOffer.endmonth}.{selectOffer.enddate}</div>
-            </div>
-            )
-            console.log(select);
-
+        
         var 연도:number = def.getFullYear();
         var pre달 = `0${def.getMonth()+1}`;
         var pre일 = `0${def.getDate()}`;
@@ -110,31 +96,23 @@ console.log("가격"+selectOffer.price)
 }}
 
 
-        // const select = selectOffer.map((select:any)=>{
-        //     return(
-        //     <div style={selectOfferStyle}>
-        //         <div>상품명: {selectOffer.name}</div>
-        //         <div>날짜: {selectOffer.startyear}.{selectOffer.startmonth}.{selectOffer.startdate} ~ {selectOffer.endyear}.{selectOffer.endmonth}.{selectOffer.enddate}</div>
-        //     </div>
-        // )})
+
+// 선택된 offer뿌리기
+
+        const sel = selectOffer.map((selOffer:any,i:number)=>{
+            return (
+                <div style={selectOfferStyle} key={i}>
+                    <div>상품명: {selOffer.name}</div>
+                    <div>1박 가격: {selOffer.price} </div>
+                </div>
+            )
+        })
 
         // 선택된 offer제어
         const handleOffer = ()=>{
-        //     setSelectOffer([{
-        //         "name": "",
-        //         "desc": "",
-        //         "price": "",
-        //         "startyear": "",
-        //         "startmonth": "",
-        //         "startdate": "" ,
-        //         "endyear": "",
-        //         "endmonth": "",
-        //         "enddate": ""
-        // }])
             setDef(startDate);
-            setActiveSelect(false)
     }
-
+   
 
 
   useEffect(()=>{
@@ -300,30 +278,38 @@ console.log("가격"+selectOffer.price)
                     {
                         tabContArr[activeIndex].tabFile === "HotelBooking"
                         ? <HotelBooking 
-                        abc={abc}
-                        def={def}
-                        setDef={setDef}
-                        sortState={sortState}
-                        setSortState={setSortState}
-                        setActiveSelect = {setActiveSelect}
-                        setSortedItems = {setSortedItems}
-                        setSelectOffer = {setSelectOffer}
-                        handleOffer = {handleOffer}
-                        offerItems = {offerItems}
-                        sortedItems = {sortedItems}
+                            abc={abc}
+                            def={def}
+                            setDef={setDef}
+                            sortState={sortState}
+                            selectOffer={selectOffer}
+                            setSortState={setSortState}
+                            setActiveSelect = {setActiveSelect}
+                            setSortedItems = {setSortedItems}
+                            setSelectOffer = {setSelectOffer}
+                            handleOffer = {handleOffer}
+                            offerItems = {offerItems}
+                            sortedItems = {sortedItems}
+                            activeSelect ={activeSelect}
+                            sumPrices={sumPrices}
+                            setSumPrices={setSumPrices}
                         />
                         : <EntBooking 
-                        abc={abc}
-                        def={def}
-                        setDef={setDef}
-                        sortState={sortState}
-                        setSortState={setSortState}
-                        setActiveSelect = {setActiveSelect}
-                        setSortedItems = {setSortedItems}
-                        setSelectOffer = {setSelectOffer}
-                        handleOffer = {handleOffer}
-                        offerItems = {offerItems}
-                        sortedItems = {sortedItems}
+                            abc={abc}
+                            def={def}
+                            setDef={setDef}
+                            sortState={sortState}
+                            selectOffer={selectOffer}
+                            setSortState={setSortState}
+                            setActiveSelect = {setActiveSelect}
+                            setSortedItems = {setSortedItems}
+                            setSelectOffer = {setSelectOffer}
+                            handleOffer = {handleOffer}
+                            offerItems = {offerItems}
+                            sortedItems = {sortedItems}
+                            activeSelect ={activeSelect}
+                            sumPrices={sumPrices}
+                            setSumPrices={setSumPrices}
                         />
                     } 
                 </div>
@@ -336,23 +322,20 @@ console.log("가격"+selectOffer.price)
                                     (e)=>{
                                         e.preventDefault();
                                         setActiveSelect(false);
+                                        setSelectOffer([])
                                     }
                                 }>전체삭제</button>
                             </div>
                             <div className="cart-cont">
-                               {activeSelect===true?
-                               <div style={selectOfferStyle}>
-                                    <div>상품명: {selectOffer.name}</div>
-                                    <div>선택한 날짜: {연도}.{달}.{일}</div>
-                                    <div>가격: {selectOffer.price} </div>
-                                </div>
+                               { activeSelect
+                               ?sel
                                :"담긴 상품이 없습니다." }
                             </div>
                         </div>
                         <ul className="sum">
                             <li>
                                 <div>총액</div>
-                                <div>{selectOffer.price}원</div>
+                                <div>{sumPrices.toLocaleString()} 원</div>
                             </li>
                             <li>
                                 <div>할인액</div>
@@ -361,12 +344,12 @@ console.log("가격"+selectOffer.price)
                             <hr/>
                             <li>
                                 <div>최종금액</div>
-                                <div>{selectOffer.price}원</div>
+                                <div>{sumPrices.toLocaleString()} 원</div>
                             </li>
                         </ul>
                         <div>*VAT 포함</div>
                     </div>
-                    <div className="detail-button"><button>결제 하기</button></div>
+                    <div className="detail-button"><button>날짜 및 인원 선택</button></div>
                 </div>
             </div>
         </div>

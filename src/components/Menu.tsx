@@ -1,17 +1,37 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import "./Main.css"
 
+type RightMenuProps = {
+    user:any;
+    handleLogout:any;
+}
 
-export const RightMenu:React.FC = () => {
-
+export const RightMenu:React.FC<RightMenuProps> = ({user,handleLogout}) => {
+    const [logInOut, setLogInOut] = useState('로그인')
+    useEffect(()=>{
+        
+        if (user==="") {
+            setLogInOut('로그인')
+        } else if(user!==""){
+            setLogInOut('로그아웃');
+        }
+    })
     return(
         <nav className="nav-right">
-            <div>로그인</div>
+            {user!==""
+            ?(<div><span className="login-email">{user.email} </span>님 환영합니다</div>)
+            :null
+            }
+            <div><Link to="/login" onClick={()=>{
+                if(logInOut==='로그아웃') {
+                    handleLogout();
+                }
+            }}>{logInOut}</Link></div>
             <div>예약확인</div>
             {/* <div>고객지원</div>
             <div>멤버쉽</div> */}
-            <div className="nav-bg"></div>     
+            {/* <div className="nav-bg"></div>      */}
         </nav>
     )
 }
